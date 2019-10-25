@@ -45,13 +45,17 @@ int main(int argc,char *argv[])
     
     // main game loop
     slog("gf3d main loop begin");
-    model = gf3d_model_load("dino");
+    model = gf3d_model_load("House");
     gfc_matrix_identity(modelMat);
-    model2 = gf3d_model_load("dino");
+	gfc_matrix_make_translation(
+		modelMat,
+		vector3d(0,-50,0)
+		);
+   model2 = gf3d_model_load("House");
     gfc_matrix_identity(modelMat2);
     gfc_matrix_make_translation(
             modelMat2,
-            vector3d(10,0,0)
+            vector3d(50,-50,0)
         );
     while(!done)
     {
@@ -59,8 +63,8 @@ int main(int argc,char *argv[])
         keys = SDL_GetKeyboardState(NULL); // get the keyboard state for this frame
         //update game things here
         
-        gf3d_vgraphics_rotate_camera(0.001);
-        gfc_matrix_rotate(
+        gf3d_vgraphics_rotate_camera(0);
+        /*gfc_matrix_rotate(
             modelMat,
             modelMat,
             0.002,
@@ -69,7 +73,7 @@ int main(int argc,char *argv[])
             modelMat2,
             modelMat2,
             0.002,
-            vector3d(0,0,1));
+            vector3d(0,0,1));*/
 
         // configure render command for graphics command pool
         // for each mesh, get a command and configure it from the pool
