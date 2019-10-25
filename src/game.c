@@ -49,7 +49,19 @@ int main(int argc,char *argv[])
     gfc_matrix_identity(modelMat);
 	gfc_matrix_make_translation(
 		modelMat,
-		vector3d(0,-50,0)
+		vector3d(0,-50,-10)
+		);
+	gfc_matrix_rotate(
+		modelMat,
+		modelMat,
+		30,
+		vector3d(1, 0, 0)
+		);
+	gfc_matrix_rotate(
+		modelMat,
+		modelMat,
+		15.7,
+		vector3d(0, 0, 1)
 		);
    model2 = gf3d_model_load("House");
     gfc_matrix_identity(modelMat2);
@@ -57,6 +69,18 @@ int main(int argc,char *argv[])
             modelMat2,
             vector3d(50,-50,0)
         );
+	gfc_matrix_rotate(
+		modelMat2,
+		modelMat2,
+		30,
+		vector3d(1, 0, 0)
+		);
+	gfc_matrix_rotate(
+		modelMat2,
+		modelMat2,
+		15.7,
+		vector3d(0, 0, 1)
+		);
     while(!done)
     {
         SDL_PumpEvents();   // update SDL's internal event structures
